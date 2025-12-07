@@ -1,0 +1,298 @@
+[gd_scene load_steps=5 format=3 uid="uid://dheqdb01khum0"]
+
+[ext_resource type="PackedScene" uid="uid://bm7jopqld8nmw" path="res://wall.tscn" id="1_dn6il"]
+[ext_resource type="PackedScene" uid="uid://u5g2o6u7khui" path="res://goal.tscn" id="3_2ejb0"]
+[ext_resource type="PackedScene" uid="uid://dd8bujthj8sek" path="res://nest.tscn" id="4_1fok5"]
+[ext_resource type="PackedScene" uid="uid://bto1imo8dsvhn" path="res://item.tscn" id="4_u522n"]
+
+[node name="search space" type="Node2D"]
+
+[node name="walls (outer)" type="Node" parent="."]
+
+[node name="wall" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 608)
+
+[node name="wall2" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(96, 608)
+
+[node name="wall3" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(160, 608)
+
+[node name="wall4" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 608)
+
+[node name="wall5" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(288, 608)
+
+[node name="wall6" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(352, 608)
+
+[node name="wall7" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(416, 608)
+
+[node name="wall8" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(480, 608)
+
+[node name="wall9" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(544, 608)
+
+[node name="wall10" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(608, 608)
+
+[node name="wall11" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(672, 608)
+
+[node name="wall12" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(736, 608)
+
+[node name="wall13" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(800, 608)
+
+[node name="wall14" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(864, 608)
+
+[node name="wall15" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(928, 608)
+
+[node name="wall16" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(992, 608)
+
+[node name="wall17" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1056, 608)
+
+[node name="wall18" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 608)
+
+[node name="wall19" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 544)
+
+[node name="wall20" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 480)
+
+[node name="wall21" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 416)
+
+[node name="wall22" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 352)
+
+[node name="wall23" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 288)
+
+[node name="wall24" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 224)
+
+[node name="wall25" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 160)
+
+[node name="wall26" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 96)
+
+[node name="wall27" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(32, 32)
+
+[node name="wall28" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(96, 32)
+
+[node name="wall29" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(160, 32)
+
+[node name="wall30" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 32)
+
+[node name="wall31" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(288, 32)
+
+[node name="wall32" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(352, 32)
+
+[node name="wall33" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(416, 32)
+
+[node name="wall34" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(480, 32)
+
+[node name="wall35" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(544, 32)
+
+[node name="wall36" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(608, 32)
+
+[node name="wall37" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(672, 32)
+
+[node name="wall38" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(736, 32)
+
+[node name="wall39" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(800, 32)
+
+[node name="wall40" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(864, 32)
+
+[node name="wall41" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(928, 32)
+
+[node name="wall42" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(992, 32)
+
+[node name="wall43" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1056, 32)
+
+[node name="wall44" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 32)
+
+[node name="wall45" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 544)
+
+[node name="wall46" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 480)
+
+[node name="wall47" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 416)
+
+[node name="wall48" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 352)
+
+[node name="wall49" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 288)
+
+[node name="wall50" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 224)
+
+[node name="wall51" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 160)
+
+[node name="wall52" parent="walls (outer)" instance=ExtResource("1_dn6il")]
+position = Vector2(1120, 96)
+
+[node name="walls (inner)" type="Node" parent="."]
+
+[node name="wall" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 544)
+
+[node name="wall2" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 480)
+
+[node name="wall3" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(96, 352)
+
+[node name="wall4" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(160, 288)
+
+[node name="wall5" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 288)
+
+[node name="wall6" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(288, 224)
+
+[node name="wall7" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(224, 160)
+
+[node name="wall8" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(416, 544)
+
+[node name="wall9" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(352, 352)
+
+[node name="wall10" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(416, 160)
+
+[node name="wall11" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(480, 160)
+
+[node name="wall12" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(544, 160)
+
+[node name="wall13" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(608, 224)
+
+[node name="wall14" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(544, 288)
+
+[node name="wall15" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(544, 416)
+
+[node name="wall16" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(736, 160)
+
+[node name="wall17" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(736, 288)
+
+[node name="wall18" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(608, 480)
+
+[node name="wall19" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(672, 416)
+
+[node name="wall20" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(736, 544)
+
+[node name="wall21" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(864, 480)
+
+[node name="wall22" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(800, 416)
+
+[node name="wall23" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(928, 480)
+
+[node name="wall24" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(1056, 416)
+
+[node name="wall25" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(928, 352)
+
+[node name="wall26" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(992, 288)
+
+[node name="wall27" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(928, 160)
+
+[node name="wall28" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(864, 160)
+
+[node name="wall29" parent="walls (inner)" instance=ExtResource("1_dn6il")]
+position = Vector2(864, 224)
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Item" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(224, 224)
+
+[node name="Item2" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(672, 544)
+
+[node name="Item3" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(928, 416)
+
+[node name="Item4" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(672, 96)
+
+[node name="Item6" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(992, 160)
+
+[node name="Item5" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(160, 96)
+
+[node name="Item7" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(608, 288)
+
+[node name="Item8" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(288, 544)
+
+[node name="Item9" parent="Items" instance=ExtResource("4_u522n")]
+position = Vector2(160, 416)
+
+[node name="goals" type="Node" parent="."]
+
+[node name="goal" parent="goals" instance=ExtResource("3_2ejb0")]
+position = Vector2(96, 288)
+
+[node name="goal2" parent="goals" instance=ExtResource("3_2ejb0")]
+position = Vector2(800, 160)
+
+[node name="goal3" parent="goals" instance=ExtResource("3_2ejb0")]
+position = Vector2(992, 544)
+
+[node name="nest" parent="." instance=ExtResource("4_1fok5")]
+position = Vector2(96, 544)
