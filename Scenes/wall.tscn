@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm7jopqld8nmw"]
+
+[ext_resource type="Texture2D" uid="uid://dy5hr6mhc8e4b" path="res://Assets/square.png" id="1_xxgf6"]
+[ext_resource type="Script" uid="uid://buc2vpy4sglkw" path="res://Code/GD_Wall_Tile.gd" id="2_y4f30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f30"]
+size = Vector2(257, 256)
+
+[node name="wall" type="StaticBody2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.5568628, 0, 1)
+texture = ExtResource("1_xxgf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_y4f30")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_y4f30")
+
+[node name="Code_Container" type="Node" parent="."]
+
+[node name="GD_Wall_Tile" type="Node" parent="Code_Container" node_paths=PackedStringArray("sensor")]
+script = ExtResource("2_y4f30")
+sensor = NodePath("../../Area2D")

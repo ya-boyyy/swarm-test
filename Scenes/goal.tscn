@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://u5g2o6u7khui"]
+
+[ext_resource type="Texture2D" uid="uid://1x07p5ptuw27" path="res://Assets/x.png" id="1_6k3qi"]
+[ext_resource type="Script" uid="uid://mfdgiksdt1ir" path="res://Code/GD_Goal_Tile.gd" id="2_s0pnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qle8"]
+size = Vector2(256.5, 256)
+
+[node name="goal" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_6k3qi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_0qle8")
+
+[node name="code_Container" type="Node" parent="."]
+
+[node name="GD_Goal_Tile" type="Node" parent="code_Container" node_paths=PackedStringArray("sensor", "sprite")]
+script = ExtResource("2_s0pnd")
+sensor = NodePath("../..")
+sprite = NodePath("../../Sprite2D")
+coins_given = 2

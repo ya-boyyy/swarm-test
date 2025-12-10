@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn8bqgfyq8rrc"]
+
+[ext_resource type="Texture2D" uid="uid://c4dptte1lbkx6" path="res://Assets/circle.png" id="1_xr00j"]
+[ext_resource type="Script" uid="uid://vyju318hequ5" path="res://Code/GD_Swarm_Agent.gd" id="2_kragx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhb2b"]
+radius = 129.0155
+
+[node name="agent" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xr00j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dhb2b")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dhb2b")
+
+[node name="Code_Container" type="Node" parent="."]
+
+[node name="GD_Swarm_Agent" type="Node" parent="Code_Container" node_paths=PackedStringArray("Agent_Body", "sensor", "Agent_sprite")]
+script = ExtResource("2_kragx")
+Agent_Body = NodePath("../..")
+sensor = NodePath("../../Area2D")
+base_color = Color(1, 1, 1, 1)
+Agent_sprite = NodePath("../../Sprite2D")

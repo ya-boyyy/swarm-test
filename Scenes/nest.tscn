@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd8bujthj8sek"]
+[gd_scene load_steps=4 format=3 uid="uid://dd8bujthj8sek"]
 
-[ext_resource type="Texture2D" uid="uid://1x07p5ptuw27" path="res://x.png" id="1_a18bm"]
+[ext_resource type="Texture2D" uid="uid://1x07p5ptuw27" path="res://Assets/x.png" id="1_a18bm"]
+[ext_resource type="Script" uid="uid://cqklo432lhvs8" path="res://Code/GD_Nest_Tile.gd" id="2_xe7l4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxvd1"]
 size = Vector2(257, 256)
@@ -15,3 +16,8 @@ texture = ExtResource("1_a18bm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vxvd1")
+
+[node name="Code_Container" type="Node" parent="."]
+
+[node name="GD_Nest_tile" type="Node" parent="Code_Container"]
+script = ExtResource("2_xe7l4")
