@@ -15,7 +15,7 @@ class_name SwarmAgent
 
 # --- Variables ------------------------------------
 
-@export var nest: NestTile
+
 @export var Agent_Body: CharacterBody2D
 @export var sensor: Area2D
 @export var base_color: Color
@@ -23,6 +23,7 @@ class_name SwarmAgent
 @export var Agent_sprite: Sprite2D
 
 var held_coins: int = 0
+var nest: NestTile
 
 # Local databank
 var known_walls: Array[Vector2] = []
@@ -32,10 +33,6 @@ var known_coins: Array[Vector2] = []
 # --- Godot Functions ------------------------------------
 
 func _ready() -> void:
-	if nest:
-		# Free knowledge: nest position
-		_add_unique(known_goals, nest.global_position)
-
 	if sensor:
 		sensor.body_entered.connect(_on_trigger_enter)
 	
@@ -66,6 +63,10 @@ func record_coin(coord: Vector2) -> void:
 
 func record_goal(coord: Vector2) -> void:
 	_add_unique(known_goals, coord)
+
+func set_nest(nest_ref: NestTile) -> void:
+	nest = nest_ref
+	_add_unique(known_goals, nest.sensor.global_position)
 
 # --- data sharing ------------------------------------
 

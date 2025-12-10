@@ -7,6 +7,18 @@
 
 [node name="search space" type="Node2D"]
 
+[node name="Control" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Metrics_Output" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 213.0
+offset_bottom = 57.0
+
 [node name="walls (outer)" type="Node" parent="."]
 
 [node name="wall" parent="walls (outer)" instance=ExtResource("1_dn6il")]
@@ -254,45 +266,51 @@ position = Vector2(864, 160)
 [node name="wall29" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(864, 224)
 
-[node name="Items" type="Node" parent="."]
+[node name="Coins" type="Node" parent="."]
 
-[node name="Item" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(224, 224)
 
-[node name="Item2" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin2" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(672, 544)
 
-[node name="Item3" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin3" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(928, 416)
 
-[node name="Item4" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin4" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(672, 96)
 
-[node name="Item6" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin6" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(992, 160)
 
-[node name="Item5" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin5" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(160, 96)
 
-[node name="Item7" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin7" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(608, 288)
 
-[node name="Item8" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin8" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(288, 544)
 
-[node name="Item9" parent="Items" instance=ExtResource("4_u522n")]
+[node name="coin9" parent="Coins" instance=ExtResource("4_u522n")]
 position = Vector2(160, 416)
 
-[node name="goals" type="Node" parent="."]
+[node name="Goals" type="Node" parent="."]
 
-[node name="goal" parent="goals" instance=ExtResource("3_2ejb0")]
+[node name="goal" parent="Goals" instance=ExtResource("3_2ejb0")]
 position = Vector2(96, 288)
 
-[node name="goal2" parent="goals" instance=ExtResource("3_2ejb0")]
+[node name="goal2" parent="Goals" instance=ExtResource("3_2ejb0")]
 position = Vector2(800, 160)
 
-[node name="goal3" parent="goals" instance=ExtResource("3_2ejb0")]
+[node name="goal3" parent="Goals" instance=ExtResource("3_2ejb0")]
 position = Vector2(992, 544)
 
 [node name="nest" parent="." instance=ExtResource("4_1fok5")]
 position = Vector2(96, 544)
+
+[node name="GD_Nest_tile" parent="nest/Code_Container" index="0" node_paths=PackedStringArray("Metrics_Output")]
+Metrics_Output = NodePath("../../../Control/Metrics_Output")
+agent_population_spawned = 3
+
+[editable path="nest"]

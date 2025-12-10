@@ -5,22 +5,24 @@
 
 # Purpose:
 # - Tracks tiles discovered
-# - Detects total coins on grid at initialization for collection comparison (INCOMPLETE)
+# - Detects total coins on grid at initialization for collection comparison
 # - Tracks coins collected
 # - Tracks time spent between initialization and coin collection completion
 # - Enacts the end game state when criteria is met (INCOMPLETE)
-# - Controls the swarm population spawn at initialization (INCOMPLETE)
+# - Controls the swarm population spawn at initialization
 
 extends Node
 class_name NestTile
 
 # --- Variables ------------------------------------
-
+@export var Metrics_Output: Label
+@export var Spawned_Agent: PackedScene
+@export var spawn_radius: float = 1.0 
 @export var sensor: Area2D
-var total_coin_target: int # should autodetect coins on map************
+var total_coin_target: int
 
 # Metrics
-var agent_population_spawned: int = 0
+@export var agent_population_spawned: int = 0
 var tiles_found: int = 0
 var held_coins: int = 0
 var stopwatch: float = 0.0
@@ -32,8 +34,11 @@ var known_coins: Array[Vector2] = []
 # --- Godot Functions ------------------------------------
 
 func _ready() -> void:
+	auto_detect_total_coins()
 	_add_unique(known_goals, sensor.global_position)
 	_update_tiles_found()
+	# Spawn initial population
+	_spawn_agents()
 
 
 func _process(delta: float) -> void:
@@ -42,15 +47,69 @@ func _process(delta: float) -> void:
 		if held_coins >= total_coin_target:
 			timer_running = false
 			_on_all_coins_collected()
+		display_metrics()
 
-# --- Nest Functions ------------------------------------
+# --- End Game State ------------------------------------
 
-func _on_all_coins_collected() -> void:
-	print("All coins collected!")
-	print("Time (seconds): ", stopwatch)
-	print("Agents spawned: ", agent_population_spawned)
-	print("Tiles found: ", tiles_found)
-	# Here you can emit a signal or call game over.*********************
+func _on_all_coins_collected() -> void:	
+	# Pause the entire game as the end state
+	get_tree().paused = true
+
+# --- Metrics Output
+
+func display_metrics() -> void:
+	Metrics_Output.text = "Time (seconds): %.2f" % stopwatch \
+	+ "\nAgents spawned: " + str(agent_population_spawned) \
+	+ "\nTiles found: " + str(tiles_found)
+
+
+
+# --- Agent Spawner ------------------------------------
+
+func _spawn_agents() -> void:
+	for i in range(agent_population_spawned):
+		spawn_agent()
+
+func spawn_agent() -> void:
+	# Root node of agent.tscn (CharacterBody2D named "agent")
+	var agent_root := Spawned_Agent.instantiate()
+	if agent_root == null:
+		return
+
+	# Node with SwarmAgent script: agent -> Code_Container -> GD_Swarm_Agent
+	var agent_script := agent_root.get_node("Code_Container/GD_Swarm_Agent") as SwarmAgent
+	if agent_script == null:
+		push_warning("spawn_agent: Could not find SwarmAgent at Code_Container/GD_Swarm_Agent")
+	else:
+		agent_script.set_nest(self)
+
+	# Spawn position = nest sensor position + small random offset
+	var offset := Vector2(
+		randf_range(-spawn_radius, spawn_radius),
+		randf_range(-spawn_radius, spawn_radius)
+	)
+
+	agent_root.global_position = sensor.global_position + offset
+
+
+# ---  Detect total Coins on Map -------------------------------------------------------
+
+func auto_detect_total_coins() -> void:
+	total_coin_target = 0
+
+	# Count single coins
+	for node in get_tree().get_nodes_in_group("Coins"):
+		if node.is_inside_tree():
+			# each CoinTile = 1 coin
+			total_coin_target += 1
+
+	# Count coins inside goals
+	for node in get_tree().get_nodes_in_group("Goals"):
+		if node.is_inside_tree():
+			# assumes GoalTile.gd has `coins_in_goal` export
+			total_coin_target += 2
+
+	print("Detected total coins on map: ", total_coin_target)
 
 
 # --- Knowledge handling -------------------------------------------------------

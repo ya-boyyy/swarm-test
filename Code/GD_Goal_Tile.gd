@@ -4,7 +4,7 @@
 # Project Unsupervised Swarm Intelligence Exploration
 
 # Purpose:
-# - grants a set number of coins to an agent
+# - grants 2 coins to an agent
 # - Hides when triggered
 
 extends Node
@@ -14,7 +14,6 @@ class_name GoalTile
 
 @export var sensor: Area2D
 @export var sprite: Sprite2D
-@export var coins_given: int
 
 # --- Godot Functions ------------------------------------
 
@@ -28,7 +27,7 @@ func _on_trigger_enter(body: Node) -> void:
 		return
 	var agent := body as SwarmAgent
 	agent.record_goal(sensor.global_position)
-	agent.held_coins += coins_given
+	agent.held_coins += 2
 	agent.update_color_for_coins()
 	agent.record_coin(sensor.global_position)
 	sprite.visible = false

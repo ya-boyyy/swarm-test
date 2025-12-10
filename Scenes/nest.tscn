@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd8bujthj8sek"]
+[gd_scene load_steps=5 format=3 uid="uid://dd8bujthj8sek"]
 
 [ext_resource type="Texture2D" uid="uid://1x07p5ptuw27" path="res://Assets/x.png" id="1_a18bm"]
 [ext_resource type="Script" uid="uid://cqklo432lhvs8" path="res://Code/GD_Nest_Tile.gd" id="2_xe7l4"]
+[ext_resource type="PackedScene" uid="uid://bn8bqgfyq8rrc" path="res://Scenes/agent.tscn" id="3_6mxnq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxvd1"]
 size = Vector2(257, 256)
@@ -19,5 +20,8 @@ shape = SubResource("RectangleShape2D_vxvd1")
 
 [node name="Code_Container" type="Node" parent="."]
 
-[node name="GD_Nest_tile" type="Node" parent="Code_Container"]
+[node name="GD_Nest_tile" type="Node" parent="Code_Container" node_paths=PackedStringArray("sensor")]
 script = ExtResource("2_xe7l4")
+Spawned_Agent = ExtResource("3_6mxnq")
+sensor = NodePath("../..")
+agent_population_spawned = 1
