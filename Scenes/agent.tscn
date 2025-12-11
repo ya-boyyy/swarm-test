@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhb2b"]
 radius = 129.0155
 
-[node name="agent" type="CharacterBody2D"]
+[node name="agent" type="CharacterBody2D" groups=["Agents"]]
 visibility_layer = 4
 scale = Vector2(0.25, 0.25)
 

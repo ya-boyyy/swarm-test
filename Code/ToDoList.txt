@@ -1,0 +1,4 @@
+What is missing:
+	
+	1. We need the agents not to spawn on the wall tiles or any other tile for that matter. Maybe 1 of 3 manually selected coordinates, as an option
+	2. The swarm does not have any intelligence to it, no movement, nothing as of yet.

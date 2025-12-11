@@ -1,34 +1,31 @@
-# Authors: Michael Knighten & Matt Hensel
-# Class: CS7375 Artificial Intelligence, Section 01
-# Professor: Coskun Cetinkaya
-# Project Unsupervised Swarm Intelligence Exploration
-
-# Purpose:
-# - grants 1 coin to an agent
-# - Hides when triggered
-
 extends Node
 class_name CoinTile
-
-# --- Variables ------------------------------------
 
 @export var sensor: Area2D
 @export var sprite: Sprite2D
 
-# --- Godot Functions ------------------------------------
-
 func _ready() -> void:
-	sensor.body_entered.connect(_on_trigger_enter)
-
-# --- Coin Operations ------------------------------------
+	if sensor:
+		sensor.body_entered.connect(_on_trigger_enter)
 
 func _on_trigger_enter(body: Node) -> void:
-	if not body is SwarmAgent:
+	# Only react to agent roots
+	if not body.is_in_group("Agents"):
+		print("apples...")
 		return
-	var agent := body as SwarmAgent
-	agent.held_coins += 1
-	agent.update_color_for_coins()
-	agent.record_coin(sensor.global_position)
+
+	# body is the root "agent" node (CharacterBody2D)
+	var agent_script := body.get_node("Code_Container/GD_Swarm_Agent") as SwarmAgent
+	if agent_script == null:
+		push_warning("CoinTile: Could not find SwarmAgent at Code_Container/GD_Swarm_Agent on %s" % body.name)
+		return
+
+	# Give coin
+	agent_script.held_coins += 1
+	agent_script.update_color_for_coins()
+	agent_script.record_coin(sensor.global_position)
+
+	# Hide this coin
 	sprite.visible = false
 	sensor.hide()
-	set_deferred("monitoring", false)
+	sensor.set_deferred("monitoring", false)  # <- use sensor here, not self
