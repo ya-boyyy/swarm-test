@@ -8,7 +8,7 @@ radius = 129.0155
 
 [node name="agent" type="CharacterBody2D" groups=["Agents"]]
 visibility_layer = 4
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.15, 0.15)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 20
@@ -30,3 +30,4 @@ Agent_Body = NodePath("../..")
 sensor = NodePath("../../Area2D")
 base_color = Color(1, 1, 1, 1)
 Agent_sprite = NodePath("../../Sprite2D")
+move_speed = 120.0

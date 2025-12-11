@@ -1,3 +1,11 @@
+# Authors: Michael Knighten & Matt Hensel 
+# Class: CS7375 Artificial Intelligence, Section 01 
+# Professor: Coskun Cetinkaya 
+# Project Unsupervised Swarm Intelligence Exploration 
+
+# Purpose: 
+# - grants 1 coin to an agent 
+# - Hides when triggered
 extends Node
 class_name CoinTile
 

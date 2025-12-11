@@ -1,4 +1,10 @@
-What is missing:
+What needs to be done:
 	
 	1. We need the agents not to spawn on the wall tiles or any other tile for that matter. Maybe 1 of 3 manually selected coordinates, as an option
 	2. The swarm does not have any intelligence to it, no movement, nothing as of yet.
+	   particle swarm should scan every frame and go "where do i go" so they basically run their search/"activation function"
+	3. we will utilize this such that every frame (or x seconds or whatever) it checks its data and environment and then performs an optimal behavior
+	   instead of a particle optimization, its using particles to problem solve by sharing data
+	4. they may share optimal paths towards the nest or towards goals, but more or less they are scanning the area cooperatively to search and return to the nest with all coins
+	5. when it comes to actual implementation, we need to make it so the agents basically pick a random direction, gain data, routinely return to the nest, then based on that data try to find a coin until they stumble across goals, let the nest know, and then they eventually clear the board
+	6. multi-agent state-machine that acts like a swam

@@ -179,17 +179,11 @@ position = Vector2(1120, 96)
 
 [node name="walls (inner)" type="Node" parent="."]
 
-[node name="wall" parent="walls (inner)" instance=ExtResource("1_dn6il")]
-position = Vector2(224, 544)
-
 [node name="wall2" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(224, 480)
 
 [node name="wall3" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(96, 352)
-
-[node name="wall4" parent="walls (inner)" instance=ExtResource("1_dn6il")]
-position = Vector2(160, 288)
 
 [node name="wall5" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(224, 288)
@@ -227,9 +221,6 @@ position = Vector2(544, 416)
 [node name="wall16" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(736, 160)
 
-[node name="wall17" parent="walls (inner)" instance=ExtResource("1_dn6il")]
-position = Vector2(736, 288)
-
 [node name="wall18" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(608, 480)
 
@@ -241,9 +232,6 @@ position = Vector2(736, 544)
 
 [node name="wall21" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(864, 480)
-
-[node name="wall22" parent="walls (inner)" instance=ExtResource("1_dn6il")]
-position = Vector2(800, 416)
 
 [node name="wall23" parent="walls (inner)" instance=ExtResource("1_dn6il")]
 position = Vector2(928, 480)
@@ -311,6 +299,6 @@ position = Vector2(96, 544)
 
 [node name="GD_Nest_tile" parent="nest/Code_Container" index="0" node_paths=PackedStringArray("Metrics_Output")]
 Metrics_Output = NodePath("../../../Control/Metrics_Output")
-agent_population_spawned = 3
+initial_agent_population = 5
 
 [editable path="nest"]
