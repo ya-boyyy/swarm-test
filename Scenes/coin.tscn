@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttk8k"]
 size = Vector2(256, 256)
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["Coins"]]
 scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,4 +22,3 @@ shape = SubResource("RectangleShape2D_ttk8k")
 script = ExtResource("2_0t63x")
 sensor = NodePath("../..")
 sprite = NodePath("../../Sprite2D")
-coins_given = 1

@@ -14,3 +14,8 @@ config/name="swarm algorithm test"
 run/main_scene="uid://dheqdb01khum0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+Coins=""
+Goals=""
