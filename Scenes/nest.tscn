@@ -23,5 +23,5 @@ shape = SubResource("RectangleShape2D_vxvd1")
 [node name="GD_Nest_tile" type="Node" parent="Code_Container" node_paths=PackedStringArray("sensor")]
 script = ExtResource("2_xe7l4")
 Spawned_Agent = ExtResource("3_6mxnq")
+spawn_radius = 50.0
 sensor = NodePath("../..")
-agent_population_spawned = 1

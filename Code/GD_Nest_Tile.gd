@@ -17,12 +17,14 @@ class_name NestTile
 # --- Variables ------------------------------------
 @export var Metrics_Output: Label
 @export var Spawned_Agent: PackedScene
-@export var spawn_radius: float = 1.0 
+@export var spawn_radius: float = 1.0
 @export var sensor: Area2D
+@export var initial_agent_population: int = 1  # how many to spawn at start
+
 var total_coin_target: int
 
 # Metrics
-@export var agent_population_spawned: int = 0
+var agents_spawned: int = 0                   # runtime counter
 var tiles_found: int = 0
 var held_coins: int = 0
 var stopwatch: float = 0.0
@@ -38,7 +40,7 @@ func _ready() -> void:
 	_add_unique(known_goals, sensor.global_position)
 	_update_tiles_found()
 	# Spawn initial population
-	_spawn_agents()
+	_spawn_agents(initial_agent_population)
 
 
 func _process(delta: float) -> void:
@@ -51,23 +53,21 @@ func _process(delta: float) -> void:
 
 # --- End Game State ------------------------------------
 
-func _on_all_coins_collected() -> void:	
+func _on_all_coins_collected() -> void:
 	# Pause the entire game as the end state
 	get_tree().paused = true
 
-# --- Metrics Output
+# --- Metrics Output ------------------------------------
 
 func display_metrics() -> void:
 	Metrics_Output.text = "Time (seconds): %.2f" % stopwatch \
-	+ "\nAgents spawned: " + str(agent_population_spawned) \
+	+ "\nAgents spawned: " + str(agents_spawned) \
 	+ "\nTiles found: " + str(tiles_found)
-
-
 
 # --- Agent Spawner ------------------------------------
 
-func _spawn_agents() -> void:
-	for i in range(agent_population_spawned):
+func _spawn_agents(count: int) -> void:
+	for i in range(count):
 		spawn_agent()
 
 func spawn_agent() -> void:
@@ -75,6 +75,8 @@ func spawn_agent() -> void:
 	var agent_root := Spawned_Agent.instantiate()
 	if agent_root == null:
 		return
+
+	add_child(agent_root)
 
 	# Node with SwarmAgent script: agent -> Code_Container -> GD_Swarm_Agent
 	var agent_script := agent_root.get_node("Code_Container/GD_Swarm_Agent") as SwarmAgent
@@ -91,8 +93,10 @@ func spawn_agent() -> void:
 
 	agent_root.global_position = sensor.global_position + offset
 
+	# Track how many have been spawned
+	agents_spawned += 1
 
-# ---  Detect total Coins on Map -------------------------------------------------------
+# --- Detect total Coins on Map -------------------------------------------------------
 
 func auto_detect_total_coins() -> void:
 	total_coin_target = 0
@@ -111,7 +115,6 @@ func auto_detect_total_coins() -> void:
 
 	print("Detected total coins on map: ", total_coin_target)
 
-
 # --- Knowledge handling -------------------------------------------------------
 
 func _add_unique(array: Array[Vector2], coord: Vector2) -> void:
@@ -120,21 +123,17 @@ func _add_unique(array: Array[Vector2], coord: Vector2) -> void:
 			return
 	array.append(coord)
 
-
 func record_wall(coord: Vector2) -> void:
 	_add_unique(known_walls, coord)
 	_update_tiles_found()
-
 
 func record_coin(coord: Vector2) -> void:
 	_add_unique(known_coins, coord)
 	_update_tiles_found()
 
-
 func record_goal(coord: Vector2) -> void:
 	_add_unique(known_goals, coord)
 	_update_tiles_found()
-
 
 func _update_tiles_found() -> void:
 	# distinct positions across all arrays
@@ -150,11 +149,10 @@ func _update_tiles_found() -> void:
 				tmp.append(c)
 	tiles_found = tmp.size()
 
-
 func _share_databanks(other) -> void:
 	if not (other is SwarmAgent):
 		return  # ignore anything else
-		
+
 	# Take data:
 	for data in other.known_walls:
 		_add_unique(known_walls, data)
@@ -162,7 +160,7 @@ func _share_databanks(other) -> void:
 		_add_unique(known_goals, data)
 	for data in other.known_coins:
 		_add_unique(known_coins, data)
-		
+
 	# Give data:
 	for data in known_walls:
 		other._add_unique(other.known_walls, data)
